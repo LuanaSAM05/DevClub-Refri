@@ -34,7 +34,8 @@
 }
 
 .item .fruit {
-    width: 88%;
+    width: 70%;
+    right: 230px;
     position: absolute;
     top: 0;
     z-index: 3;
