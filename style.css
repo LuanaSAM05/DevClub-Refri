@@ -92,3 +92,86 @@
 .item.active .title {
     animation: toActive 0.5s ease-in-out 1;
 }
+
+/* TEXTOS RESPONSIVOS */
+.item .title {
+    font-size: clamp(3rem, 10vw, 12rem);
+}
+
+/* IMAGENS RESPONSIVAS */
+.item .fruit {
+    width: clamp(250px, 60vw, 700px);
+    right: clamp(0px, 10vw, 230px);
+}
+
+.item .refri {
+    width: clamp(200px, 40vw, 600px);
+}
+
+/* BOTÕES */
+#prev, #next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+/* 📱 TABLET */
+@media (max-width: 1024px) {
+
+    .item .title {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+    }
+
+    .item .fruit {
+        width: 60%;
+        right: 5%;
+    }
+
+    .item .refri {
+        width: 400px;
+    }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+    .item .title {
+        top: 20%;
+        font-size: clamp(2rem, 10vw, 5rem);
+    }
+
+    .item .fruit {
+        width: 80%;
+        right: 0;
+        top: 10%;
+    }
+
+    .item .refri {
+        width: 250px;
+        top: 65%;
+    }
+
+    #prev {
+        left: 10px;
+    }
+
+    #next {
+        right: 10px;
+    }
+}
+
+/* 📱 MOBILE PEQUENO */
+@media (max-width: 480px) {
+
+    .item .title {
+        font-size: 2.5rem;
+    }
+
+    .item .refri {
+        width: 200px;
+    }
+
+    .item .fruit {
+        width: 90%;
+    }
+}
