@@ -1,9 +1,11 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ITENS */
 .item {
     display: none;
     width: 100%;
@@ -19,159 +21,93 @@
     display: block;
 }
 
+/* TEXTO CENTRALIZADO */
 .item .title {
-    font-size: 12rem;
+    font-size: clamp(3rem, 10vw, 12rem);
     color: #ffffff;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-align: center;
-
-    /* Uma ferramenta para centralizar qualquer coisa que a gente quiser */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 5;
 }
 
+/* FRUTA */
 .item .fruit {
-    width: 70%;
-    right: 230px;
     position: absolute;
-    top: 0;
+    top: 50%;
+    right: clamp(0px, 10vw, 230px);
+    width: clamp(250px, 60vw, 700px);
+    transform: translateY(-50%);
     z-index: 3;
 }
 
+/* LATA */
 .item .refri {
-    z-index: 2;
-    width: 600px;
-    position: absolute;
-
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#prev, #next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: #eee9;
-    border: 1px solid #ccc;
-    color: #eee;
-    font-size: x-large;
-    font-family: monospace;
-    cursor: pointer;
-    z-index: 4;
-    border-radius: 50%;   
-}
-
-#prev {
-    left: 30px;
-}
-
-#next {
-    right: 30px;
-}
-
-@keyframes toActive {
-
-    from {
-        top: 100%;
-        opacity: 0;
-    }
-
-}
-
-.item.active img.fruit {
-    animation: toActive 0.5s ease-in-out 1;
-}
-
-.item.active .title {
-    animation: toActive 0.5s ease-in-out 1;
-}
-
-/* TEXTOS RESPONSIVOS */
-.item .title {
-    font-size: clamp(3rem, 10vw, 12rem);
-}
-
-/* IMAGENS RESPONSIVAS */
-.item .fruit {
-    width: clamp(250px, 60vw, 700px);
-    right: clamp(0px, 10vw, 230px);
-}
-
-.item .refri {
     width: clamp(200px, 40vw, 600px);
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 /* BOTÕES */
 #prev, #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 40px;
     height: 40px;
+    background-color: #eee9;
+    border: 1px solid #ccc;
+    color: #eee;
     font-size: 1.2rem;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 4;
+    border-radius: 50%;
 }
 
-/* 📱 TABLET */
+#prev { left: 30px; }
+#next { right: 30px; }
+
+/* ANIMAÇÃO - VEM DE BAIXO PARA CIMA */
+@keyframes fromBottom {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(-50%); opacity: 1; }
+}
+
+.item.active img.fruit {
+    animation: fromBottom 0.5s ease-in-out 1;
+}
+
+.item.active .title {
+    animation: fromBottom 0.5s ease-in-out 1;
+}
+
+/* RESPONSIVIDADE 📱 TABLET */
 @media (max-width: 1024px) {
-
-    .item .title {
-        font-size: clamp(2.5rem, 8vw, 8rem);
-    }
-
-    .item .fruit {
-        width: 60%;
-        right: 5%;
-    }
-
-    .item .refri {
-        width: 400px;
-    }
+    .item .title { font-size: clamp(2.5rem, 8vw, 8rem); }
+    .item .fruit { width: 60%; right: 5%; }
+    .item .refri { width: 400px; }
 }
 
-/* 📱 MOBILE */
+/* RESPONSIVIDADE 📱 MOBILE */
 @media (max-width: 768px) {
+    .item .title { font-size: clamp(2rem, 10vw, 5rem); top: 50%; transform: translate(-50%, -50%); }
+    .item .fruit { width: 70%; right: 0; top: 50%; transform: translateY(-50%); }
+    .item .refri { width: 250px; top: 50%; transform: translate(-50%, -50%); }
 
-    .item .title {
-        top: 20%;
-        font-size: clamp(2rem, 10vw, 5rem);
-    }
-
-    .item .fruit {
-        width: 80%;
-        right: 0;
-        top: 10%;
-    }
-
-    .item .refri {
-        width: 250px;
-        top: 65%;
-    }
-
-    #prev {
-        left: 10px;
-    }
-
-    #next {
-        right: 10px;
-    }
+    #prev { left: 10px; }
+    #next { right: 10px; }
 }
 
-/* 📱 MOBILE PEQUENO */
+/* RESPONSIVIDADE 📱 PEQUENO MOBILE */
 @media (max-width: 480px) {
-
-    .item .title {
-        font-size: 2.5rem;
-    }
-
-    .item .refri {
-        width: 200px;
-    }
-
-    .item .fruit {
-        width: 90%;
-    }
+    .item .fruit { width: 100%; top: 50%; transform: translateY(-50%); }
+    .item .refri { width: clamp(150px, 60vw, 400px); top: 50%; transform: translate(-50%, -50%); }
 }
